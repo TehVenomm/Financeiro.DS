@@ -16,15 +16,17 @@
 			
 			foreach($contatos as $bolacha)
 			{
-				$email_compare 	= $bolacha['email'];
-				$senha_compare 	= $bolacha['senha'];
-				$perfil_compare = $bolacha['tipoConta'];
+				$idUsuario_compare 	= $bolacha['idUsuario'];
+				$email_compare 		= $bolacha['email'];
+				$senha_compare 		= $bolacha['senha'];
+				$perfil_compare 	= $bolacha['tipoConta'];
 			}
 			
 			if($qtd == 1){
 				if(md5($senha_login) == $senha_compare){
 					session_start();
-					$_SESSION['email']	= $email_compare;
+					$_SESSION['idUsuario'] 	= $idUsuario_compare;
+					$_SESSION['email']		= $email_compare;
 					
 					if ($perfil_compare == 1){
 						header("Location: menuAdm.php");
