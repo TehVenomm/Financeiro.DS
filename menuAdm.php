@@ -31,8 +31,8 @@
 								</a>
 							</th>
 							<th>
-								<a href="listarContas-ADM.php">
-									<input type="button" value="Listar Contas Atendentes"/>
+								<a href="listarDespesa.php">
+									<input type="button" value="Listar Despesas"/>
 								</a>
 							</th>
 							<th>

@@ -12,32 +12,45 @@
 			<hr>
 		</header>
 		<?php
-			//include "validaExistencia.php"
+			include "validaExistencia.php";
 			include "conexao.php";
 			
-			$valor = $_POST['valor'];
-			$dataEfetuada = $_POST['dataRealizada'];
-			$descricao = $_POST['descricao'];
+			if(isset($_POST['cadastrar']))
+			{
+				$valor = $_POST['valor'];
+				$dataEfetuada = $_POST['dataRealizada'];
+				$descricao = $_POST['descricao'];
+				$tipo = $_POST['tipo'];
+				$categoria = $_POST['categoria'];
+				$idUsuario = $_SESSION['idUsuario'];
+				
+				$script = "INSERT INTO lancamento VALUES (?,?,?,?,?,?,?)";
+				$resultado = $conex -> prepare($script);
+				$resultado -> execute(array('',$valor,$dataEfetuada,$descricao,$tipo,$categoria,$idUsuario));
+				header('location:menuAdm.php');
+			}
 		?>
 
 		<div>
 			<fieldset>
 				<form action="" method="POST">
-					Valor da Despesa:
-					<input type='number' name='valor' placeholder='Insira o valor da sua despesa' required> <br>
+					Valor da Despesa: R$:
+					<input type='text' name='valor' placeholder='Insira o valor da despesa' required> <br>
 					Data efetuada:
 					<input type='date'   name='dataRealizada' > <br>
 					Descrição:
-					<input type='number' name='descricao' placeholder='Descreva a despesa' required> <br>
+					<input type='text' name='descricao' placeholder='Descreva a despesa' required> <br>
 					Tipo da despesa:<br>
-					<input type='radio' name='tipo' value='1'  required> Despesa 
-					<input type='radio' name='tipo' value='2'  required> Receita <br>
+					<input type='radio' name='tipo' value='D'  required> Despesa 
+					<input type='radio' name='tipo' value='R'  required> Receita <br>
 					Categoria:<br>
-					<select>
+					<select name='categoria'>
 						<?php
 							include "chamaCategoria.php";
 						?>
 					</select>
+					
+					<input type='submit' name='cadastrar' value='Cadastrar'>
 				</form>
 			</fieldset>	
 		</div>
