@@ -1,10 +1,11 @@
-<?php 
+<?php
 	try
-	{	header('Content-Type: text/html;charset=utf-8');
-		$conexao = new PDO("mysql:host=localhost;dbname=imagens_db;","root","");
-		$conexao -> query("SET NAMES 'utf8'");
+	{
+		header('Content-Type: text/html; charset=utf-8');
+		$conex = new PDO("mysql:host=localhost;dbname=braz_bd;charset=utf8","root","");
+		$conex -> query("SET NAMES 'utf8'");
 	}
-	catch(PODExeption $e)
+	catch(PDOexception $e)
 	{
 		echo $e->getMessage();
 	}
