@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 07-Abr-2018 às 02:08
+-- Generation Time: 10-Abr-2018 às 03:13
 -- Versão do servidor: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -68,11 +68,21 @@ CREATE TABLE `lancamento` (
   `idLancamento` int(11) NOT NULL,
   `valor` double NOT NULL,
   `dataEfetuada` varchar(45) NOT NULL,
-  `descricao` int(11) NOT NULL,
+  `descricao` varchar(100) NOT NULL,
   `tipo` char(1) NOT NULL,
   `idCategoria_Lancamento` int(11) NOT NULL,
   `usuario_idUsuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `lancamento`
+--
+
+INSERT INTO `lancamento` (`idLancamento`, `valor`, `dataEfetuada`, `descricao`, `tipo`, `idCategoria_Lancamento`, `usuario_idUsuario`) VALUES
+(1, 5, '2018-03-08', 'Lanchezão de 5cão', 'D', 8, 1),
+(2, 16, '2018-04-09', 'Comida', 'D', 8, 1),
+(3, 123, '1212-12-12', 'Teste', 'D', 2, 1),
+(4, 123123, '1212-12-12', 'joojjojasoj', 'D', 6, 1);
 
 -- --------------------------------------------------------
 
@@ -132,7 +142,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT for table `lancamento`
 --
 ALTER TABLE `lancamento`
-  MODIFY `idLancamento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idLancamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `usuario`
