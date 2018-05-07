@@ -16,21 +16,20 @@
 		
 
 		<div>
+			<a href="index.php" style="margin-left: 43%;">
+					<input class="botaoTop" type="button" value="Menu Principal" name="index" align="center">
+			</a>
+			
 			<fieldset>
 				<legend>
 					Dados das Despesas:
 				</legend>
-				
-				<a href="index.php">
-					<input class="botaoTop" type="button" value="Menu Principal" name="index" align="center">
-				</a>
-				
 				<table border="1" style ="margin : 0 auto">
 					<th>Valor</th>
-					<th>Data Efetuada</th>
-					<th>Descrição</th>
 					<th>Tipo</th>
+					<th>Descrição</th>
 					<th>Categoria</th>
+					<th>Data Efetuada</th>
 					<th>Usuario</th>
 					<th colspan="2">Opções</th>
 					
@@ -44,6 +43,7 @@
 						$contatos -> execute();
 						foreach($contatos as $x)
 						{
+								$id = $x['idLancamento'];
 								$valor = $x['valor'];
 								$dataEfetuada = $x['dataEfetuada'];
 								$descricao = $x['descricao'];
@@ -52,20 +52,20 @@
 								$usuario = $x['email'];					
 								
 								echo "<tr>";								
-								echo "<th> R$:".$valor."</th>";
-								echo "<th>".$dataEfetuada."</th>";
-								echo "<th>".$descricao."</th>";
+								echo "<th> R$ ".number_format((float)$valor, 2, ',', '')."</th>";
 								echo "<th>".$tipo."</th>";
+								echo "<th>".$descricao."</th>";
 								echo "<th>".$categoria."</th>";
+								echo "<th>".$dataEfetuada."</th>";
 								echo "<th>".$usuario."</th>";
 
 								echo "<th>
-										<a href='edicaoCriancas.php?id=$id&editar=editar'>
-											<img src='imagens/Expandir01.png' width='20px'>
+										<a href='edicaoDespesa.php?id=$id&editar=editar'>
+											<img src='imagens/Editar01.png' width='20px'>
 										</a>
 									  </th>";
 								echo "<th>
-										<a href='exclusaoCriancas.php?id=$id&editar=editar'>
+										<a href='exclusaoDespesa.php?id=$id&editar=editar'>
 											<img src='imagens/Lixo01.png' width='20px'>
 										</a>
 									  </th>";
