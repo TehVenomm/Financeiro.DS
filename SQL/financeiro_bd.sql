@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 10-Abr-2018 às 03:13
+-- Generation Time: 08-Maio-2018 às 03:00
 -- Versão do servidor: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -49,7 +49,6 @@ INSERT INTO `categoria` (`idCategoria`, `nome`) VALUES
 (7, 'Mat. de limpeza'),
 (8, 'Lanches'),
 (9, 'Combustivel'),
-(10, 'Vale transporte'),
 (11, 'Estadias'),
 (12, 'Outros'),
 (13, 'Tarifas Banco'),
@@ -80,9 +79,9 @@ CREATE TABLE `lancamento` (
 
 INSERT INTO `lancamento` (`idLancamento`, `valor`, `dataEfetuada`, `descricao`, `tipo`, `idCategoria_Lancamento`, `usuario_idUsuario`) VALUES
 (1, 5, '2018-03-08', 'Lanchezão de 5cão', 'D', 8, 1),
-(2, 16, '2018-04-09', 'Comida', 'D', 8, 1),
+(2, 16.55, '2018-04-09', 'Comida', 'D', 8, 1),
 (3, 123, '1212-12-12', 'Teste', 'D', 2, 1),
-(4, 123123, '1212-12-12', 'joojjojasoj', 'D', 6, 1);
+(5, 1500, '2018-05-01', 'Pacote enviado', 'D', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -102,7 +101,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idUsuario`, `email`, `senha`, `tipoConta`) VALUES
-(1, 'adm@adm.adm', '63a9f0ea7bb98050796b649e85481845', b'1'),
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', b'1'),
 (2, 'usr@usr.usr', 'f8032d5cae3de20fcec887f395ec9a6a', b'0');
 
 --
@@ -142,7 +141,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT for table `lancamento`
 --
 ALTER TABLE `lancamento`
-  MODIFY `idLancamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idLancamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `usuario`
