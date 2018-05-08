@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="pt-br">
 	<head>
-		<title>Excluir Despesa</title>
+		<title>Excluir Categoria</title>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="stylesheet.css" />
 		<?php
@@ -9,23 +9,23 @@
 			if(isset($_POST['sim']))
 			{
 				include "conexao.php";
-				$sql = "DELETE FROM lancamento WHERE idLancamento = '$id_exclusao'";
+				$sql = "DELETE FROM categoria WHERE idCategoria = '$id_exclusao'";
 				$contatos = $conex -> prepare($sql);
 				$contatos -> execute();
 				$contatos= NULL;
-				header("Location: listarDespesa.php");
+				header("Location: listarCategorias.php");
 			}
 		?>
 	</head>
 	<body>
 		<header>
 			<hr>
-			<h2><center>Projeto Financeiro - Exclusão de Despesa - Braz & Senes</center></h2>
+			<h2><center>Projeto Financeiro - Exclusão de Categoria - Braz & Senes</center></h2>
 			<hr>
 		</header>
 		
 			<h2 align="center">
-			Deseja apagar a despesa selecionada?
+			Deseja apagar a categoria selecionada?
 			</h2>
 			<div>
 				<span align="center">
@@ -33,7 +33,7 @@
 						<input type="submit" name="sim" value="Sim">
 						<?php
 							echo "<th>
-									<a href='listarDespesa.php'>
+									<a href='listarCategoria.php'>
 										<input type='button' name='nao' value='Não'>
 									</a>
 								  </th>";

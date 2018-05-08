@@ -1,10 +1,12 @@
 <!DOCTYPE HTML>
 <html lang="pt-br">
 	<head>
-		<title>Atividade 29/03</title>
+		<title>Editar Despesa</title>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="stylesheet.css" />
 		<?php
+		
+		
 			include "conexao.php";
 			$id_edicao = $_GET['id'];
 			
@@ -23,6 +25,10 @@
 			}
 			$contatos = NULL;
 			
+			$charD = "D";
+			$charR = "R";
+			
+			
 			/*if (is_null($valor_edicao)){
 				header("location: notFound.php");
 			}*/
@@ -37,16 +43,16 @@
 					
 					
 					include "conexao.php";
-					$sql = "UPDATE lancamento_tb SET 
+					$sql = "UPDATE lancamento SET 
 							valor = ?,
 							dataEfetuada = ?,
 							descricao = ?,
 							tipo = ?,
-							idCategoria = ?";
+							idCategoria_Lancamento = ? 
+							WHERE idLancamento = ?";
 					$contatos = $conex -> prepare($sql);
-					$contatos -> execute(array($valor, $dataEfetuada, $descricao, $tipo, $idCategoria));
+					$contatos -> execute(array($valor, $dataEfetuada, $descricao, $tipo, $idCategoria, $id_edicao));
 					$contatos = NULL;
-					
 					header("location:listarDespesa.php");
 				}
 		?>
@@ -54,7 +60,7 @@
 	<body>
 		<header>
 			<hr>
-			<h2><center>Atividade 29/03 - Edição de Despesa - Braz & Senes</center></h2>
+			<h2><center>Projeto Financeiro - Edição de Despesa - Braz & Senes</center></h2>
 			<hr>
 		</header>
 		
@@ -73,15 +79,15 @@
 				<form action="" method="POST">
 					<p>
 						Valor: <br>
-						<input type="number" name="valor_new" value="<?= $valor_edicao ?>" maxlength="200" autofocus required>
+						<input type="number" step=".01" name="valor_new" value="<?= $valor_edicao ?>" maxlength="200" autofocus required>
 					</p>
 					
 					<hr>
 					
 					<p>
 						Tipo da despesa:<br>
-						<input type='radio' name='tipo_new' value='D' <?php if($tipo_edicao == "D"){echo "selected";}?> required> Despesa 
-						<input type='radio' name='tipo_new' value='R' <?php if($tipo_edicao == "R"){echo "selected";}?> required> Receita <br>
+						<input type='radio' name='tipo_new' value='D' <?php if(strcmp(trim($tipo_edicao), $charD) == 0){echo "checked='checked'";}?> required> Despesa <br>
+						<input type='radio' name='tipo_new' value='R' <?php if(strcmp(trim($tipo_edicao), $charR) == 0){echo "checked='checked'";}?> required> Receita <br>
 					</p>
 					
 					<hr>
